@@ -1,0 +1,36 @@
+
+* PostForm.js dosyası:
+    * Ekle düşmesine basıldığında:
+        * yeni not reducer'a dispatch edilmeli
+        * react-toastify kullanılarak kullanıcıya not ekleme durumuyla ilgili geribildirim verilmeli
+        * yoruma alınmış history push kısmı aktifleştirilmeli
+
+
+* actions.js dosyası:
+    * notEkleAPI fonksiyonunda reducer'a veriler gönderilmeli
+
+* PostList.js dosyası:
+    * burada görüntülenecek notlar useSelector ile reducer'dan getirilmeli.
+
+
+* Post.js dosyası:
+    * handleSil fonksiyonu reducer'a silme aksionu dispatch edecek şekilde güncellenmeli
+
+    
+* reducers.js dosyası:
+    * bir reducer fonksiyonu yazılmalı:
+        * not ekle ve not sil action'ları geldiğinda yapılacaklar yazılmalı. API ile yapılacak işlerde thunk middleware düşünülerek dispatch yapılmalı
+        * hazır verilen localStorage fonksiyonlarını kullanılarak reducer'daki veriler localStorage ile eşlenmeli.
+            reducer'da bir değişiklik olduğunda localStorage da güncellenmeli
+        
+        * başlangıçta localStorage'daki notları okuyup dönecek bir action case yazılmalı
+
+
+* index.js dosyası:
+    * redux kullanılanarak bir store oluşturulmalı ve reducer fonksiyonuna bağlanmalı.
+    * thunk middleware yüklenmeli ve devreye alınmalı
+
+* App.js dosyası:
+
+    * Uygulama açıldığında reducer'ın localStorage verilerini kontrol edip getirmesini sağlayacak bir işlev eklenmeli useEffect?
+

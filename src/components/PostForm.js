@@ -3,6 +3,10 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { useHistory } from "react-router";
 import Gratitude from "./../assets/grForm.png";
+import { useDispatch, useSelector } from "react-redux";
+import { notEkleAPI } from "../actions";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function PostForm() {
   const {
@@ -12,6 +16,7 @@ export default function PostForm() {
   } = useForm({ mode: "onChange" });
 
   const history = useHistory();
+  const dispatcher = useDispatch()
 
   function onSubmit(data) {
     const yeniNot = {
@@ -21,11 +26,11 @@ export default function PostForm() {
         .filter((v) => v !== "")
         .join("|"),
     };
-
+    dispatcher(notEkleAPI(yeniNot))
     // burada ilgili eylemi dispatch edin
     // toast mesajı gösterin
     // sonra aşağıdaki satırı aktifleştirin
-    // setTimeout(() => history.push("/notlar"), 2000);
+    setTimeout(() => history.push("/notlar"), 2000);
   }
 
   const inputCx = "border border-zinc-300 h-9 rounded-none text-sm px-2 w-full";
@@ -83,6 +88,7 @@ export default function PostForm() {
           Ekle
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }
